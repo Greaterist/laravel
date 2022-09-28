@@ -9,6 +9,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HELLOW USERS</h1>
+    <h1>CATEGORIES</h1>
+    <?php foreach ($categories as $item): ?>
+        <a href="<?=route('newsCategory', $item['id'])?>"><?=$item['title']?></a><br>
+    <?php endforeach; ?>
 </body>
 </html>

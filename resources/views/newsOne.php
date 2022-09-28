@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HELLOW USERS</h1>
+    <H1><?=$news['title']?></H1>
+    <p><?=$news['text']?></p>
 </body>
 </html>

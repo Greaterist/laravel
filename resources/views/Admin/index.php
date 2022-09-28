@@ -9,6 +9,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HELLOW USERS</h1>
+    <h1>admin panel</h1>
 </body>
 </html>
