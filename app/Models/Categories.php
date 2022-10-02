@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Categories
 {
-    private static $categories = [
+    private array $categories = [
         [
             'id' => 1,
             'title' => 'Спорт',
@@ -19,14 +19,14 @@ class Categories
         ]
         ];
 
-    public static function getCategories(): array
+    public function getCategories(): array
     {
-        return static::$categories;
+        return $this->categories;
     }
 
-    public static function getCategoriesId($id): ?array
+    public function getCategoriesId($id): ?array
      {
-        foreach (static::getCategories() as $categories) {
+        foreach ($this->getCategories() as $categories) {
             if ($categories['id'] == $id) {
                 return $categories;
             }

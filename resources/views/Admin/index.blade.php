@@ -1,7 +1,7 @@
-@extends('Layouts.main')
+@extends('layouts.app')
 
 @section('title')
-@parent test1
+@parent Админка
 @endsection
 
 @section('menu')
@@ -10,6 +10,6 @@
 
 @section('content')
 
-<h1>test1</h1>
+<h1>admin panel</h1>
 
 @endsection
