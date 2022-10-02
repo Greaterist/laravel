@@ -21,3 +21,7 @@
     </div>
 </div>
 @endsection
+
+@section('footer')
+    2022
+@endsection

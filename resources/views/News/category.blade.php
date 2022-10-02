@@ -16,3 +16,7 @@
     @endforeach
 
 @endsection
+
+@section('footer')
+    2022
+@endsection

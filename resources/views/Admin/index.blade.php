@@ -13,3 +13,7 @@
 <h1>admin panel</h1>
 
 @endsection
+
+@section('footer')
+    2022
+@endsection

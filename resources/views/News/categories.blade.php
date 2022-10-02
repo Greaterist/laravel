@@ -15,3 +15,7 @@
         <a href="{{route('news.category', $item['id'])}}">{{$item['title']}}</a><br>
     @endforeach
 @endsection
+
+@section('footer')
+    2022
+@endsection

@@ -13,3 +13,7 @@
     <h1>HELLOW USERS</h1>
 
 @endsection
+
+@section('footer')
+    2022
+@endsection

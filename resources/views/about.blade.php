@@ -13,3 +13,7 @@
 <h1>ABOUT</h1>
 
 @endsection
+
+@section('footer')
+    2022
+@endsection
