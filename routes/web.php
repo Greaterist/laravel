@@ -24,6 +24,7 @@ Route::name('admin.')
 ->prefix('admin')
 ->group(function (){
     Route::get('/', [IndexController::class, 'index'])->name('index'); 
+    Route::match(['get', 'post'], '/createNews', [IndexController::class, 'createNews'])->name('createNews'); 
     Route::get('/test1', [IndexController::class, 'test1'])->name('test1'); 
     Route::get('/test2', [IndexController::class, 'test2'])->name('test2'); 
 });
@@ -38,7 +39,7 @@ Route::name('news.')
     Route::get('/{id}', [NewsController::class, 'show'])->name('one'); 
 });
 
-
+Route::get('/save', [HomeController::class, 'save'])->name('save');
 
 
 Route::view('/login', 'login')->name('login');
@@ -47,4 +48,4 @@ Route::view('/about', 'about')->name('about');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-
+<div class="container">
 @if ($news)
     @if (!$news['isPrivate'])
     <H1>{{$news['title']}}</H1>
@@ -18,6 +18,8 @@
 @else
 <p> нет такой новости</p>
 @endif
+</div>
+
 
 @endsection
 

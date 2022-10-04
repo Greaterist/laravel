@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-
+<div class="container">
 <h1>Добавить новость</h1>
     <form action="#">
         <label for="title">заголовок:</label>
@@ -20,6 +20,8 @@
         <input type="text" id="longText"><br>
         <input type="submit" value="Добавить новость">
     </form>
+</div>
+
 
 @endsection
 

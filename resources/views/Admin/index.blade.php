@@ -5,12 +5,14 @@
 @endsection
 
 @section('menu')
-@include('menu')
+@include('Admin.menu')
 @endsection
 
 @section('content')
-
+<div class="container">
 <h1>admin panel</h1>
+</div>
+
 
 @endsection
 
