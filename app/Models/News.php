@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class News
@@ -32,25 +33,28 @@ class News
 
     public function getNews(): array
     {
-        return json_decode((Storage::disk('local')->get('news.json')), true);
+        $news = DB::select('SELECT * FROM news');
+        return $news;
+        //return json_decode((Storage::disk('local')->get('news.json')), true);
     }
 
-    public function getNewsid($id): ?array
+    public function getNewsid($id)
      {
-        if (array_key_exists($id, $this->getNews())){
-            return $this->getNews()[$id];
-        }
-        return null;
+        $select = DB::select("SELECT * FROM news WHERE id=:id", ['id' => $id]);
+        return isset($select[0]) ? $select[0]: null;
+
     }
 
-    public function getNewsCategory($category): ?array
+    public function getNewsCategory($category)
      {
-        $newsArray = [];
+        $select = DB::select("SELECT * FROM news WHERE category_id=:category", ['category' => $category]);
+        return $select;
+        /*$newsArray = [];
         foreach ($this->getnews() as $news) {
             if ($news['category_id'] == $category) {
                 $newsArray[]=$news;
             }
         }
-        return $newsArray;
+        return $newsArray;*/
     }
 }

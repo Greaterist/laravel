@@ -11,9 +11,9 @@
 @section('content')
 <div class="container">
 @if ($news)
-    @if (!$news['isPrivate'])
-    <H1>{{$news['title']}}</H1>
-    <p>{{$news['text']}}</p>
+    @if (!$news->isPrivate)
+    <H1>{{$news->title}}</H1>
+    <p>{{$news->text}}</p>
     @endif
 @else
 <p> нет такой новости</p>

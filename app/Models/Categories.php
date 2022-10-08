@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
+
 class Categories
 {
     private array $categories = [
@@ -21,16 +23,21 @@ class Categories
 
     public function getCategories(): array
     {
-        return $this->categories;
+        $categories = DB::select('SELECT * FROM categories');
+        return $categories;
     }
 
-    public function getCategoriesId($id): ?array
+    public function getCategoriesId($id)
      {
-        foreach ($this->getCategories() as $categories) {
+        $select = DB::select("SELECT * FROM categories WHERE id=:id", ['id' => $id]);
+        return isset($select[0]) ? $select[0]: null;
+
+        /*foreach ($this->getCategories() as $categories) {
             if ($categories['id'] == $id) {
                 return $categories;
             }
         }
         return null;
+        */
     }
 }

@@ -12,7 +12,7 @@
 <div class="container">
 <h1>CATEGORIES</h1>
     @foreach ($categories as $item)
-        <a href="{{route('news.category', $item['id'])}}">{{$item['title']}}</a><br>
+        <a href="{{route('news.category', $item->id)}}">{{$item->title}}</a><br>
     @endforeach
 </div>
 
