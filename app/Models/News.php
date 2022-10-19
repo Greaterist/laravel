@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class News
+class News extends Model
 {
-    private array $news = [
+    /*private array $news = [
         [
             'id' => 1,
             'title' => 'News 1',
@@ -29,7 +30,7 @@ class News
             'isPrivate' => true,
             'category_id' => '3'
         ]
-        ];
+        ];*/
 
     public function getNews(): array
     {

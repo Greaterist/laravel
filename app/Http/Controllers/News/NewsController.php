@@ -10,7 +10,8 @@ class NewsController extends Controller
 {
     public function index(News $news)
     {
-        return view('News.index')->with('news', $news->getNews());
+        $news = News::query()->paginate(5);
+        return view('News.index')->with('news', $news);
     }
 
     public function show($id, News $news)

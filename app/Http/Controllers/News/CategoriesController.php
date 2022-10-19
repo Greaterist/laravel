@@ -11,16 +11,17 @@ class CategoriesController extends Controller
 {
     public function index(Categories $categories)
     {
-        return view('News.categories')->with('categories', $categories->getCategories());
+        $categories = Categories::query()->get();
+        return view('News.categories')->with('categories', $categories);
     }
 
     public function show($id, Categories $categories, News $news)
     {
-
-        if ($categories->getCategoriesId($id) == null) {
+        $category = Categories::query()->where('id', $id)->exists();
+        if(!$category){
             return abort(404);
         }
-
-        return view('News.category')->with('news', $news->getNewsCategory($id));
+        $news = News::query()->where('category_id', $id)->get();
+        return view('News.category')->with('news', $news);
     }
 }
