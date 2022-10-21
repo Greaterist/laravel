@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Categories extends Model
 {
-    private array $categories = [
+    /*private array $categories = [
         [
             'id' => 1,
             'title' => 'Спорт',
@@ -20,7 +20,9 @@ class Categories extends Model
             'id' => 3,
             'title' => 'Наука',
         ]
-        ];
+        ];*/
+
+    protected $fillable = ['table'];
 
     public function getCategories(): array
     {
@@ -29,9 +31,9 @@ class Categories extends Model
     }
 
     public function getCategoriesId($id)
-     {
+    {
         $select = DB::select("SELECT * FROM categories WHERE id=:id", ['id' => $id]);
-        return isset($select[0]) ? $select[0]: null;
+        return isset($select[0]) ? $select[0] : null;
 
         /*foreach ($this->getCategories() as $categories) {
             if ($categories['id'] == $id) {

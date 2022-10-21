@@ -31,7 +31,9 @@ class News extends Model
             'category_id' => '3'
         ]
         ];*/
-
+    
+    protected $fillable = ['title', 'text', 'isPrivate', 'category_id'];
+    
     public function getNews(): array
     {
         $news = DB::select('SELECT * FROM news');
@@ -40,14 +42,13 @@ class News extends Model
     }
 
     public function getNewsid($id)
-     {
+    {
         $select = DB::select("SELECT * FROM news WHERE id=:id", ['id' => $id]);
-        return isset($select[0]) ? $select[0]: null;
-
+        return isset($select[0]) ? $select[0] : null;
     }
 
     public function getNewsCategory($category)
-     {
+    {
         $select = DB::select("SELECT * FROM news WHERE category_id=:category", ['category' => $category]);
         return $select;
         /*$newsArray = [];

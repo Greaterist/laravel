@@ -17,22 +17,32 @@ class IndexController extends Controller
 
     public function createNews (Request $request, Categories $categories)
     {
-        if($request->isMethod('post')){
-            $request->flash();
+        
+        if ($request->isMethod('post')) {
+
             $news = new News();
-            $news = $news->getNews();
-            $newData = $request->except('_token');
-            $newData['id'] = count($news);
-            //dd($news); 
-            if (!isset($newData['isPrivate'])){
-                $newData['isPrivate'] = false;
+
+            $name = null;
+            if ($request->file('image')) {
+                $path = Storage::putFile('public/images', $request->file('image'));
+                $name = Storage::url($path);
             }
-            $news[] = $newData;
-            Storage::disk('local')->put('news.json', json_encode($news, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-            return redirect()->route('news.one', $newData['id']);
+
+            $data = $request->except('_token');
+            if (!isset($data['isPrivate'])){
+                $data['isPrivate'] = false;
+            }
+            $news->fill($data)->save();
+
+
+            return redirect()->route('admin.createNews')->with('success', 'Новость добавлена успешно!');
+
         }
-        return view('Admin.createNews',[
-            'categories' => $categories->getCategories()
+
+        $news = new News();
+        return view('Admin.createNews', [
+            'news' => $news,
+            'categories' => Categories::query()->select(['id', 'title'])->get()
         ]);
     }
 
