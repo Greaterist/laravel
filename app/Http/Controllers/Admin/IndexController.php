@@ -46,6 +46,25 @@ class IndexController extends Controller
         ]);
     }
 
+    public function update(Request $request, News $news)
+    {
+        $name = null;
+        if ($request->file('image')) {
+            $path = Storage::putFile('public/images', $request->file('image'));
+            $name = Storage::url($path);
+        }
+
+        $data = $request->except('_token');
+        $news->fill($data)->save();
+        return redirect()->route('admin.index')->with('success', 'Новость изменена успешно!');
+    }
+
+    public function delete(News $news)
+    {
+        $news->delete();
+        return redirect()->route('admin.index')->with('success', 'Новость удалена успешно!');
+    }
+
     public function test1 ()
     {
         return response()->download('index.png');
